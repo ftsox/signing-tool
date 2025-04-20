@@ -12,3 +12,7 @@ typechain-truffle
 typechain-web3
 
 cache
+
+.signing-tool-state*
+ctx.json
+proofs

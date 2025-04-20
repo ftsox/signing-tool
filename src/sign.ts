@@ -84,6 +84,7 @@ export async function signUptimeVote(web3: Web3, flareSystemsManagerAddress: str
       console.error(`Failed to send uptime vote for epoch ${rewardEpochId} from ${wallet.address}: ${e}`);
       console.dir(e);
     }
+    throw e;
   }
 }
 

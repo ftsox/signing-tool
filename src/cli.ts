@@ -4,6 +4,7 @@ import { prompts } from "./prompts";
 import { getStatus } from './status';
 import { initializeWeb3 } from '../lib/initialize';
 import { CONTRACTS } from '../configs/networks';
+import { startAutoSigning } from './auto';
 
 export async function cli(program: Command) {
     program
@@ -42,5 +43,11 @@ export async function cli(program: Command) {
         .action(async (options: OptionValues) => {
             const web3 = await initializeWeb3();
             await getStatus(web3, CONTRACTS().FlareSystemsManager.address, Number(options.firstRewardEpochId));
+        })
+    program
+        .command("auto").description("Run automated signing process that periodically checks and signs rewards")
+        .action(async () => {
+            const web3 = await initializeWeb3();
+            await startAutoSigning(web3, CONTRACTS().FlareSystemsManager.address);
         })
 }
