@@ -27,6 +27,28 @@ yarn
 yarn build
 ```
 
+## Automatic signing of rewards
+
+Automatically scans for eligible rewards to sign and does so.
+
+Good to do this in a screen session
+```bash
+screen -r
+```
+
+Run the script:
+```bash
+bin/signing-tool auto
+```
+
+Detach from screen
+```bash
+CTRL+A; CTRL+D
+```
+
+NOTE: Supplanted by `enabled_reward_signing = true` in `system-client.template.toml` in `flare-systems-deployment` repo.
+TODO: Dockerize
+
 ## Signing uptime vote
 
 Signs hash-of-zero Merkle root and sends it as a vote for uptime voting to `FlareSystemsManager`.
