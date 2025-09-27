@@ -1,5 +1,5 @@
-# Use Node.js 20 LTS as base image
-FROM node:20-alpine
+# Use Node.js 18.20.2 as base image
+FROM node:18.20.2-alpine
 
 # Set working directory
 WORKDIR /app
@@ -8,15 +8,13 @@ WORKDIR /app
 COPY package*.json yarn.lock ./
 
 # Install dependencies
-RUN yarn install --frozen-lockfile --production=false
+RUN yarn install --frozen-lockfile
 
 # Copy source code
 COPY . .
 
 # Build the application
-RUN yarn build && \
-    yarn install --frozen-lockfile --production=true && \
-    yarn cache clean
+RUN yarn build
 
 # Default command - run the auto signing tool
 CMD ["bin/signing-tool", "auto"]
