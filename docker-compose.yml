@@ -2,7 +2,7 @@ services:
   signing-tool:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: Dockerfile
     container_name: ftso-signing-tool
     restart: unless-stopped
     env_file:

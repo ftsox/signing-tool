@@ -60,42 +60,23 @@ NOTE: Supplanted by `enabled_reward_signing = true` in `system-client.template.t
 
 2. **Build and start the service**:
    ```bash
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
 
 3. **View logs**:
    ```bash
-   docker-compose logs -f signing-tool
+   docker compose logs -f signing-tool
    ```
 
 4. **Stop the service**:
    ```bash
-   docker-compose down
+   docker compose down
    ```
 
 5. **Restart the service**:
    ```bash
-   docker-compose restart signing-tool
+   docker compose restart signing-tool
    ```
-
-### Docker Log Management
-
-Logs are automatically managed with:
-- Maximum 10MB per log file
-- Keeps 5 log files (50MB total)
-- Logs are also mounted to `./logs` directory on your host
-
-### Docker vs Manual Setup
-
-Docker setup provides:
-- ✅ Consistent environment across different systems
-- ✅ Automatic restarts on failure
-- ✅ Simplified dependency management
-- ✅ Easy log management
-- ✅ No need to manage Node.js versions locally
-
-The Docker container will automatically restart if it crashes and will start automatically when your system boots.
-
 
 ## Signing uptime vote
 
