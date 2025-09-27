@@ -1,0 +1,12 @@
+services:
+  signing-tool:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: ftso-signing-tool
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data

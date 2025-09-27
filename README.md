@@ -46,8 +46,56 @@ Detach from screen
 CTRL+A; CTRL+D
 ```
 
-NOTE: Supplanted by `enabled_reward_signing = true` in `system-client.template.toml` in `flare-systems-deployment` repo.
-TODO: Dockerize
+NOTE: Supplanted by `enabled_reward_signing = true` in `system-client.template.toml` in `flare-systems-deployment` repo, but this doesn't really work.
+
+## Docker Setup (Recommended)
+
+### Prerequisites
+- Docker and Docker Compose installed on your system
+- Environment file configured (see Config file section above)
+
+### Build and Run with Docker
+
+1. **Create environment file**: Follow the config file instructions above to create your `.env` file with all required variables.
+
+2. **Build and start the service**:
+   ```bash
+   docker-compose up -d --build
+   ```
+
+3. **View logs**:
+   ```bash
+   docker-compose logs -f signing-tool
+   ```
+
+4. **Stop the service**:
+   ```bash
+   docker-compose down
+   ```
+
+5. **Restart the service**:
+   ```bash
+   docker-compose restart signing-tool
+   ```
+
+### Docker Log Management
+
+Logs are automatically managed with:
+- Maximum 10MB per log file
+- Keeps 5 log files (50MB total)
+- Logs are also mounted to `./logs` directory on your host
+
+### Docker vs Manual Setup
+
+Docker setup provides:
+- ✅ Consistent environment across different systems
+- ✅ Automatic restarts on failure
+- ✅ Simplified dependency management
+- ✅ Easy log management
+- ✅ No need to manage Node.js versions locally
+
+The Docker container will automatically restart if it crashes and will start automatically when your system boots.
+
 
 ## Signing uptime vote
 
